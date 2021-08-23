@@ -1,0 +1,15 @@
+#set-token-wrapper{
+  background-color: $color-bg-tertiary;
+  border-radius: 2rem;
+  padding: 2rem;
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  margin: 1rem;
+}
+
+#set-token-center{
+  display: flex;
+  align-items: center;
+  height: 100vh;
+}

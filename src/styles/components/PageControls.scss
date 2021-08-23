@@ -1,0 +1,26 @@
+.page-controls {
+  display: flex;
+  list-style-type: none;
+
+  a {
+    display: block;
+    padding: 1rem;
+    background-color: $color-button-bg;
+    color: $color-button-text;
+    border-radius: 0.5rem;
+    margin: 0.5rem;
+    font-size: $font-size-md;
+
+    &:hover {
+      cursor: pointer;
+      opacity: 0.9;
+    }
+
+    
+  }
+}
+
+.page-controls__active-btn{
+  background-color: $green !important;
+  color: $color-bg-secondary !important;
+}

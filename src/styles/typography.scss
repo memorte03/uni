@@ -1,0 +1,43 @@
+.typography--body {
+    font-size: $font-size-sm;
+    color: $color-text-secondary;
+    font-weight: 400;
+}
+
+.typography--header {
+    font-size: $font-size-lg;
+    color: $color-text-primary;
+    font-weight: 600
+}
+
+.typography--big-label {
+    font-size: $font-size-sm;
+    color: $color-text-secondary;
+    font-weight: 400;
+    font-family: $font-family-secondary;
+}
+
+.typography--label {
+    font-size: $font-size-sm;
+    color: $color-text-secondary;
+    font-weight: 400;
+}
+
+.typography--code {
+    font-size: $font-size-sm;
+    font-weight: 400;
+    font-family: $font-family-secondary;
+}
+
+.typography--page-header {
+    font-size: $font-size-xl;
+    font-weight: 600;
+    color: $color-text-primary;
+}
+
+.typography--input {
+    font-size: $font-size-md;
+    font-weight: 400;
+    color: $color-text-primary;
+    line-height: 2rem;
+}

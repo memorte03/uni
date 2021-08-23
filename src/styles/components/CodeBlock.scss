@@ -1,0 +1,12 @@
+.code-block-wrapper{
+  background-color: $color-bg-secondary;
+  border-radius: 0.5rem;
+  position: relative;
+}
+
+.code-block__header{
+  padding: 1rem;
+  width: 100%;
+  border-bottom: 2px $gray-dark solid;
+  @extend .typography--big-label
+}

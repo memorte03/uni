@@ -1,0 +1,13 @@
+# compiled output
+/static
+
+# Dependency directories
+node_modules/
+
+# System Files
+.DS_Store
+Thumbs.db
+
+graphql.schema.json
+
+.env

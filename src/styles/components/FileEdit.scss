@@ -1,0 +1,29 @@
+.file-edit-wrapper{
+  padding: .5rem 1.5rem 1.5rem 1.5rem;
+  border-radius: 1rem;
+  margin: 2rem 0;
+  background-color: $color-bg-tertiary;
+}
+
+.code-textarea {
+  color: rgba(255, 255, 255, 0.0 );
+  caret-color: $yellow;
+  background-color: transparent;
+  padding: 1rem;
+  padding-left: 3rem;
+  font-size: $font-size-sm;
+  font-family: 'Consolas'; //TODO: change to fira code 
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  border: none;
+  overflow: hidden;
+  width: 100%;
+  resize: none;
+
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
+}

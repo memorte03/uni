@@ -1,0 +1,37 @@
+// Imports
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600&family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://use.typekit.net/fwn2ekc.css');
+
+// Colors
+/* NOTE: You should avoid using these variables in normal SCSS styling files, instead use
+ the denotive colos as these might change */
+
+$gray-darker: #0A0C12;
+$gray-dark: #0F111A;
+$gray: #464B5D;
+$gray-light: #ABB2BF;
+$gray-lighter: #FFFFFF;
+
+$red: #ff5370;
+$green: #c3e88d;
+$yellow: #ffcb6b;
+
+$color-bg-primary: $gray-dark;
+$color-bg-secondary: $gray-darker;
+$color-bg-tertiary: #1a1f2c;
+
+$color-text-secondary: $gray-light;
+$color-text-primary: $gray-lighter;
+
+$color-button-bg: $gray;
+$color-button-text: $gray-lighter;
+
+$color-border: $gray-darker;
+
+$font-size-sm: 1.3rem;
+$font-size-md: 1.5rem;
+$font-size-lg: 1.8rem;
+$font-size-xl: 3.2rem;
+
+$font-family-primary: 'Inter', sans-serif;
+$font-family-secondary: 'Fira Code', monospace;

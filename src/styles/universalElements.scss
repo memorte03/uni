@@ -1,0 +1,117 @@
+.btn {
+  background-color: $color-button-bg;
+  color: $color-button-text;
+  font-size: $font-size-md;
+  border: none;
+  display: flex;
+  min-height: 3.2rem;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  margin: 0 0.5rem;
+
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+.btn--no-margin {
+  margin: 0;
+}
+
+.btn--red {
+  background-color: $red;
+}
+
+.btn--green {
+  background-color: $green;
+  color: $color-bg-secondary;
+}
+
+.input {
+  @extend .typography--input;
+
+  background-color: $color-bg-secondary;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  color: $color-text-primary;
+  border: none;
+  width: 100%;
+
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
+}
+#body-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+#body-inner-wrapper {
+  max-width: 1000px;
+  flex-grow: 1;
+  padding: 0 1rem 3rem 1rem;
+}
+
+#page-header {
+  margin: 4rem 0;
+  display: flex;
+  justify-content: space-between;
+  @extend .typography--page-header;
+}
+
+#page-header-right {
+  display: flex;
+}
+
+#page-footer {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+#page-footer-right {
+  display: flex;
+}
+
+// .input-text {
+//     font-size: $font-size-md;
+//     border-radius: $border-radius-md;
+//     border: 1px solid $color-border;
+//     display: flex;
+//     min-height: 3.2rem;
+//     align-items: center;
+//     justify-content: center;
+//     padding: $spacing-sm $spacing-md;
+//     color: $color-text-primary;
+//     transition: box-shadow 0.1s ease-in-out;
+
+//     &:hover {
+//         box-shadow: $shadow-input--active;
+//     }
+
+//     &:focus {
+//         border: 1px solid $color-input-border--active;
+//         box-shadow: $shadow-input--active;
+//         outline: none;
+//     }
+
+//     &[type='color'] {
+//         height: 4rem;
+//         width: 4rem;
+//         border-radius: 100px;
+//         padding: 0.3rem;
+//     }
+
+//     &[type='color']::-webkit-color-swatch-wrapper {
+//         padding: 0;
+//     }
+
+//     &[type='color']::-webkit-color-swatch {
+//         border: none;
+//         border-radius: 100px;
+//     }
+// }

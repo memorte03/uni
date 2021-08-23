@@ -1,0 +1,70 @@
+html {
+  font-size: 10px;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: $font-family-primary;
+  margin: 0;
+  background-color: $color-bg-primary;
+  color: $color-text-secondary;
+}
+
+a {
+  text-decoration: none;
+}
+
+label {
+  font-size: $font-size-sm;
+}
+
+button {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+
+hr {
+  background-color: $color-border;
+  height: 1px;
+  border: 0;
+}
+
+:not(input) {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+    supported by Chrome, Edge, Opera and Firefox */
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  padding: 0;
+  margin: 0;
+  font-weight: 400;
+  font-size: 1em;
+}
+
+label {
+  @extend .typography--label;
+  padding: 1rem 0;
+  display: block;
+}

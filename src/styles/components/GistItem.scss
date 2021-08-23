@@ -1,0 +1,28 @@
+.gist-item-wrapper{
+    margin: 4rem 0;
+}
+
+.gist-item__header-wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.gist-item__prop-icon{
+    margin: .5rem;
+}
+.gist-item__header-right{
+    display: flex;
+}
+
+.gist-item__prop{
+    display: flex;
+    margin-left: 1.2rem;
+    align-items: center;
+    @extend .typography--body
+}
+
+.gist-item__date{
+    margin: .75rem 0 2rem 0;
+    @extend .typography--body
+}
