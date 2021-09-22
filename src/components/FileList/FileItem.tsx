@@ -16,19 +16,21 @@ const FileEdit = ({ initialValues, dispatch, id }: Props) => {
   const [name, setName] = useState(initialValues.name);
 
   const handleCodeInput = (e:any) => {
+    const updatedCode = e.target.value;
     setCode(e.target.value);
     dispatch({type: 'UPDATE', payload: {
       id: id,
       name: name,
-      code: code
+      code: updatedCode    
     }})
   };
 
   const handleNameInput = (e:any) => {
-    setName(e.target.value);
+    const updatedName = e.target.value;
+    setName(updatedName);
     dispatch({type: 'UPDATE', payload: {
       id: id,
-      name: name,
+      name: updatedName, 
       code: code
     }})
   }

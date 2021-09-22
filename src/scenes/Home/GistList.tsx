@@ -4,23 +4,28 @@ import { useQuery } from '~/api';
 
 type Props = {
   setPageCount: any;
+  sinceDate: string | null;
   currentPage: number;
 };
 
-const GistList = ({ currentPage, setPageCount }: Props) => {
+const GistList = ({ currentPage, setPageCount, sinceDate }: Props) => {
   const { data, loading, error, headers, refetch } = useQuery(
-    `gists?per_page=20&page=${currentPage}&order=desc`
+    `gists?per_page=20&page=${currentPage}${sinceDate ? `&since=${sinceDate}` : ''}`
   );
 
   useEffect(() => {
     refetch();
-  }, [currentPage])
+  }, [currentPage, sinceDate])
 
   useEffect(() => {
     if (headers) {
-      const matches = headers.get('Link')!.match(/(?<=&page=)\d+(?<!rel="last"*.+)/gs);
-      const pageCount = matches![matches!.length - 1];
-      setPageCount(pageCount);
+      if(headers.get('Link') !== null){
+        const matches = headers.get('Link')!.match(/(?<=&page=)\d+(?<!rel="last"*.+)/gs);
+        const pageCount = matches![matches!.length - 1];
+        setPageCount(pageCount);
+      } else{
+        setPageCount(1);
+      }
     }
   }, [headers]);
 

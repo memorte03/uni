@@ -2,10 +2,13 @@ import React, { useState } from 'react';
 import GistList from './GistList';
 import { useHistory } from 'react-router-dom';
 import Paginate from 'react-paginate';
+import DayPickerInput from 'react-day-picker/DayPickerInput';
+import dayjs from 'dayjs';
 
 const Home = () => {
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(0);
   const [pageCount, setPageCount] = useState<number | null>(null);
+  const [sinceDate, setSinceDate] = useState<string | null>(null);
 
   const history = useHistory();
 
@@ -22,10 +25,18 @@ const Home = () => {
     setCurrentPage(selectedItem.selected);
   };
 
+  const handleDateInput = (day:Date) => {
+    const date = dayjs(day);
+    setSinceDate(date.toISOString());
+    console.log('up')
+  };
+
   return (
     <div id='body-inner-wrapper'>
       <div id='home-header'>
-        <div id='home-header-left'>Sort by:</div>
+        <div id='home-header-left'>Show modified since: 
+        <DayPickerInput onDayChange={handleDateInput} dayPickerProps={{disabledDays: {after: new Date()}}}/>
+        </div>
         <div id='home-header-right'>
           <button className='btn' onClick={handleLogout}>
             Change token
@@ -35,7 +46,7 @@ const Home = () => {
           </button>
         </div>
       </div>
-      <GistList key={currentPage} setPageCount={setPageCount} currentPage={currentPage} />
+      <GistList key={currentPage} setPageCount={setPageCount} currentPage={currentPage} sinceDate={sinceDate}/>
       {pageCount && (
         <div id='home-footer'>
           <Paginate

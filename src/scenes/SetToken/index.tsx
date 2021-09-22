@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router';
 
-const SetToken = () => {
+function SetToken() {
   const history = useHistory();
   const [token, setToken] = useState('');
 
@@ -11,25 +11,38 @@ const SetToken = () => {
     history.push('/');
   };
 
-  const handleTokenInput = ( e: any) => {
+  const handleTokenInput = (e: any) => {
     setToken(e.target.value);
-  }
+  };
 
   return (
-    <div id='set-token-center'>
-      <div id='set-token-wrapper'>
-        <h1 className={'typography--page-header'}>Enter your github token</h1>
-        <form>
-          <div style={{ padding: '2rem 0' }}>
-            <input type='text' className='input' value={token} onChange={handleTokenInput}/>
-          </div>
-          <button type='submit' className='btn btn--green' onClick={handleSubmit}>
+    <div id="set-token-center">
+      <div id="set-token-wrapper">
+            <h1 className="typography--page-header">
+              Enter your github token
+</h1>
+
+            <form>
+            <div style={{ padding: '2rem 0' }}>
+                    <input
+              className="input"
+              onChange={handleTokenInput}
+                  type="text"
+              value={token}
+              />
+                </div>
+
+            <button
+            className="btn btn--green"
+              onClick={handleSubmit}
+              type="submit"
+          >
             Submit token
           </button>
         </form>
+        </div>
       </div>
-    </div>
   );
-};
+}
 
 export default SetToken;

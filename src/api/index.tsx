@@ -1,17 +1,16 @@
-import { useState, useEffect, useCallback } from 'react';
-import { javascript } from 'webpack';
+import { useState, useEffect } from 'react';
 import {
   MutationMethodTypes,
   UseQueryReturnType,
-  UseLazyQueryReturnType,
   UseMutationReturnType,
+  UseQueryFetchDataType,
+  UseMutationFetchDataType,
 } from './types';
 
 export const useQuery = (path: string): UseQueryReturnType => {
-  const [data, setData] = useState<any>(null);
-  const [headers, setHeaders] = useState<any>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<null | string>(null);
+  // Probably the only easy way to remove unnecessary updates so let it be
+  let fetchData:UseQueryFetchDataType = {loading: true, error: null, headers: null, data:null}
+  const [state, setState] = useState<UseQueryFetchDataType>(fetchData);
 
   const refetch = () => {
     fetch('https://api.github.com/' + path, {
@@ -22,19 +21,20 @@ export const useQuery = (path: string): UseQueryReturnType => {
       },
     })
       .then((res) => {
-        setHeaders(res.headers);
+        fetchData = {...fetchData, headers: res.headers}
         if (!res.ok) {
           throw Error(res.status + ' ' + res.statusText);
         }
         return res.json();
       })
       .then((data) => {
-        setData(data);
-        setLoading(false);
+        fetchData = {...fetchData, data: data, loading: false}
       })
       .catch((err) => {
         console.error(err.message);
-        setError(err.message);
+        fetchData = {...fetchData, error: err}
+      }).finally(() => {
+        setState(fetchData);
       });
   };
 
@@ -43,11 +43,8 @@ export const useQuery = (path: string): UseQueryReturnType => {
   }, []);
 
   return {
-    data: data,
-    loading: loading,
-    error: error,
-    headers: headers,
-    refetch: refetch,
+    ...state,
+    refetch: refetch
   };
 };
 
@@ -55,8 +52,9 @@ export const useMutation = (
   path: string,
   method: MutationMethodTypes
 ): UseMutationReturnType => {
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<null | string>(null);
+  // Probably the only easy way to remove unnecessary updates so let it be
+  let fetchData:UseMutationFetchDataType = {loading: true, error: null}
+  const [state, setState ] = useState<UseMutationFetchDataType>(fetchData);
 
   const mutate = (body?: any) => {
     return fetch('https://api.github.com/' + path, {
@@ -71,15 +69,18 @@ export const useMutation = (
         if (!res.ok) {
           throw Error(res.status + ' ' + res.statusText);
         }
-        setLoading(false);
+        fetchData = { ...fetchData, loading: false}
         return res.json();
       })
       .catch((err) => {
-        setError(err.message);
+        fetchData = { ...fetchData, error: err.message}
+      }).finally(() => {
+        setState(fetchData);
       });
+
   };
 
-  return [mutate, { loading: loading, error: error }];
+  return [mutate, state];
 };
 
 // export const useLazyQuery = (path: string): UseLazyQueryReturnType => {

@@ -1,11 +1,11 @@
 import React, { useMemo } from 'react';
 import FileList from '~c/FileList';
 import { useQuery } from '~/api';
-import { useParams } from 'react-router';
+import { useParams } from 'react-router-dom';
 import { SubmitHandlerProps } from '~c/FileList/types';
 import { v4 as uuidv4 } from 'uuid';
 import { useMutation } from '~/api';
-import { useHistory } from 'react-router';
+import { useHistory } from 'react-router-dom';
 
 type ParamTypes = {
   id: string;
@@ -18,8 +18,6 @@ const Edit = () => {
   const history = useHistory();
 
   const submitHandler = async ({ description, files }: SubmitHandlerProps) => {
-    console.log(files);
-
     if (files) {
       let sortedFiles: any = {};
       files.forEach((file) => {
@@ -37,6 +35,8 @@ const Edit = () => {
         description: description,
         files: sortedFiles,
       });
+
+      console.log(sortedFiles)
 
       history.push('/');
     }

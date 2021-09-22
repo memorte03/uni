@@ -18,7 +18,6 @@ export const fileListReducer = (state: ReducerStateType, action: any) => {
         return file;
       });
     case 'DELETE':
-      console.log(state);
       return state
         .filter((file: any) => {
           return file.id !== payload.id || file.initialName;

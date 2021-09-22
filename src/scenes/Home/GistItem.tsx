@@ -1,19 +1,10 @@
 import React, { useMemo } from 'react';
-import SyntaxHighlighter from 'react-syntax-highlighter';
 import { Link } from 'react-router-dom';
 import dayjs from 'dayjs';
-import codeTheme from '~/codeTheme';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import duration from 'dayjs/plugin/duration';
 import CodeBlock from '~/components/CodeBlock';
-import language from 'react-syntax-highlighter/dist/esm/languages/hljs/1c';
 import { useQuery } from '~/api';
-
-// import StarIcon from '~a/svg/small/star.svg';
-// import FileIcon from '~a/svg/small/File.svg';
-// import CommentIcon from '~a/svg/small/Comment.svg';
-// import ForkIcon from '~a/svg/small/Fork.svg';
-// import GistList from './GistList';
 
 type Props = {
   id: string;
@@ -26,10 +17,11 @@ const GistItem = ({ id }: Props) => {
   dayjs.extend(duration);
 
   const codeBlock = useMemo(() => {
-    if (data) {
+    if (data && Object.keys(data.files).length > 0) {
       const file = data.files[Object.keys(data.files)[0]];
       return <CodeBlock content={file.content} fileName={file.filename} language={file.language} />;
     }
+    return <div className={'typography--big-label'}>Empty gist</div>
   }, [data]);
 
   

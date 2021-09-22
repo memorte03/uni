@@ -1,12 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
+import {
+  BrowserRouter as Router,
+  Redirect,
+  Route,
+  Switch,
+} from 'react-router-dom';
+
 import { ProjectContext } from '~/ProjectContext';
-import WorkspaceSettingsProvider from '~/WorkspaceSettingsContext';
-import Home from '~/scenes/Home';
 import Create from '~/scenes/Create';
 import Edit from '~/scenes/Edit';
-import SetToken from '~/scenes/SetToken';
+import Home from '~/scenes/Home';
 import Preview from '~/scenes/Preview';
-import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+import SetToken from '~/scenes/SetToken';
+import WorkspaceSettingsProvider from '~/WorkspaceSettingsContext';
 
 const App = () => {
   const isAuthorized = !!localStorage.getItem('token');
@@ -15,24 +21,24 @@ const App = () => {
     <>
       <WorkspaceSettingsProvider>
         <ProjectContext.Provider value={{ projectID: 1 }}>
-          <div id='body-wrapper'>
+          <div id="body-wrapper">
             <Router>
               {!isAuthorized && <Redirect to="/setToken" />}
               <Switch>
-                <Route exact path='/setToken'>
-                  <SetToken/> 
+                <Route exact path="/setToken">
+                  <SetToken />
                 </Route>
-                <Route exact path='/'>
+                <Route exact path="/">
                   <Home />
                 </Route>
-                <Route path='/preview/:id'>
+                <Route path="/preview/:id">
                   <Preview />
                 </Route>
-                <Route path='/edit/:id'>
+                <Route path="/edit/:id">
                   <Edit />
                 </Route>
-                <Route path='/create'>
-                  <Create/>
+                <Route path="/create">
+                  <Create />
                 </Route>
               </Switch>
             </Router>
