@@ -1,4 +1,4 @@
-import { ReducerActionType, ReducerStateType, FileType } from './types';
+import { ReducerStateType } from './types';
 import { v4 as uuidv4 } from 'uuid';
 
 export const fileListReducer = (state: ReducerStateType, action: any) => {

@@ -1,14 +1,20 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router';
+import { useHistory } from 'react-router-dom';
+import validateToken from '~/helpers/validateToken';
 
 function SetToken() {
   const history = useHistory();
   const [token, setToken] = useState('');
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
-    localStorage.setItem('token', token);
-    history.push('/');
+    if(await validateToken(token)){
+      localStorage.setItem('token', token);
+      history.push('/');
+    } else{
+      // Yos I'm lazy af
+      alert('Invalid token');
+    }
   };
 
   const handleTokenInput = (e: any) => {

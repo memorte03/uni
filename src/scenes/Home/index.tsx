@@ -22,7 +22,7 @@ const Home = () => {
   };
 
   const handlePageChange = (selectedItem: { selected: number }) => {
-    setCurrentPage(selectedItem.selected);
+    setCurrentPage(selectedItem.selected + 1);
   };
 
   const handleDateInput = (day:Date) => {

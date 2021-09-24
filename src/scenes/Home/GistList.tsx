@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import GistItem from './GistItem';
 import { useQuery } from '~/api';
 
@@ -20,8 +20,10 @@ const GistList = ({ currentPage, setPageCount, sinceDate }: Props) => {
   useEffect(() => {
     if (headers) {
       if(headers.get('Link') !== null){
+        //TODO: fix this regepx cuz Safari
         const matches = headers.get('Link')!.match(/(?<=&page=)\d+(?<!rel="last"*.+)/gs);
         const pageCount = matches![matches!.length - 1];
+        console.log(headers.get('Link'))
         setPageCount(pageCount);
       } else{
         setPageCount(1);

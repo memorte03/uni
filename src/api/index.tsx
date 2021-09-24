@@ -7,13 +7,15 @@ import {
   UseMutationFetchDataType,
 } from './types';
 
+export const basePath = 'https://api.github.com/';
+
 export const useQuery = (path: string): UseQueryReturnType => {
   // Probably the only easy way to remove unnecessary updates so let it be
   let fetchData:UseQueryFetchDataType = {loading: true, error: null, headers: null, data:null}
   const [state, setState] = useState<UseQueryFetchDataType>(fetchData);
 
   const refetch = () => {
-    fetch('https://api.github.com/' + path, {
+    fetch(basePath + path, {
       method: 'GET',
       headers: {
         Accept: 'application/vnd.github.v3+json',
@@ -57,7 +59,7 @@ export const useMutation = (
   const [state, setState ] = useState<UseMutationFetchDataType>(fetchData);
 
   const mutate = (body?: any) => {
-    return fetch('https://api.github.com/' + path, {
+    return fetch(basePath + path, {
       method: method,
       headers: {
         Accept: 'application/vnd.github.v3+json',
