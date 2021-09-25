@@ -2,7 +2,7 @@ import React from 'react';
 import FileList from '~c/FileList';
 import { SubmitHandlerProps } from '~c/FileList/types';
 import { useMutation } from '~/api';
-import { useHistory } from 'react-router';
+import { useHistory } from 'react-router-dom';
 
 const Create = () => {
   const [createGist, { error }] = useMutation('gists', 'POST');
@@ -20,15 +20,15 @@ const Create = () => {
         description: description,
         files: sortedFiles,
       });
-      
+
       history.push('/');
     }
   };
 
   return (
-    <div id='body-inner-wrapper'>
+    <div id="body-inner-wrapper">
       {!!error && error}
-      <div id='page-header'>Create gist</div>
+      <div id="page-header">Create gist</div>
       <FileList submitHandler={submitHandler} />
     </div>
   );

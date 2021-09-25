@@ -8,7 +8,7 @@ type Props = {
   editMode?: boolean;
   initialFiles?: Array<FileType>;
   initialDescription?: string;
-  submitHandler: ({}: SubmitHandlerProps) => void;
+  submitHandler: ({ ...SubmitHandlerProps }) => void;
 };
 
 const FileList = ({
@@ -18,7 +18,7 @@ const FileList = ({
   submitHandler,
 }: Props) => {
   const [description, setDescription] = useState(
-    initialDescription ? initialDescription : ''
+    initialDescription ? initialDescription : '',
   );
   const [state, dispatch] = useReducer(fileListReducer, initialFiles);
 
@@ -56,19 +56,23 @@ const FileList = ({
     <form>
       <label>Gist description</label>
       <input
-        type='text'
-        name='gistName'
-        className='input'
+        type="text"
+        name="gistName"
+        className="input"
         value={description}
         onChange={handleDescriptionInput}
       ></input>
       {files}
-      <div id='page-footer'>
-        <div id='page-footer-right'>
-          <button className='btn' onClick={handleAdd}>
+      <div id="page-footer">
+        <div id="page-footer-right">
+          <button className="btn" onClick={handleAdd}>
             Add file
           </button>
-          <button className='btn btn--green' type='submit' onClick={handleSubmit}>
+          <button
+            className="btn btn--green"
+            type="submit"
+            onClick={handleSubmit}
+          >
             {editMode ? 'Edit' : 'Create'} gist
           </button>
         </div>

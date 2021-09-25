@@ -24,7 +24,7 @@ export const fileListReducer = (state: ReducerStateType, action: any) => {
         })
         .map((file: any) => {
           if (file.id == payload.id) {
-            return {...file, isDeleted: true} 
+            return { ...file, isDeleted: true };
           }
           return file;
         });
